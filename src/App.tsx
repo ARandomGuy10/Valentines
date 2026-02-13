@@ -55,6 +55,7 @@ function App() {
               <button
                 onMouseEnter={handleNoHover}
                 onClick={handleNoHover}
+                onTouchStart={handleNoHover}
                 style={{
                   position: noButtonPosition.x !== 0 ? 'fixed' : 'relative',
                   left: noButtonPosition.x !== 0 ? `${noButtonPosition.x}px` : 'auto',
@@ -90,7 +91,13 @@ function App() {
           </div>
 
           <div className="fixed inset-0 flex items-center justify-center z-20">
-            <div className="absolute inset-0 bg-gradient-to-br from-pink-100 via-red-50 to-pink-200" />
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: "url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=2940&auto=format&fit=crop')"
+              }}
+            />
+            <div className="absolute inset-0 bg-white/30 backdrop-blur-sm" />
 
             <div className="animate-reveal-left absolute top-0 left-0 w-1/2 h-full bg-red-400 z-30" />
             <div className="animate-reveal-right absolute top-0 right-0 w-1/2 h-full bg-red-400 z-30" />
