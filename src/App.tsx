@@ -102,7 +102,7 @@ function App() {
                 I knew you'd say yes!
               </p>
               <p className="text-2xl md:text-3xl text-red-500 mt-6 font-semibold">
-                Happy Valentine's Day, Isabel! ❤️
+                Happy Valentine's Day, Bebe! ❤️
               </p>
             </div>
           </div>
