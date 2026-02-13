@@ -5,7 +5,7 @@
 @layer utilities {
   @keyframes fall {
     0% {
-      transform: translateY(-10vh) rotate(0deg);
+      transform: translateY(-30vh) rotate(0deg);
       opacity: 1;
     }
 
@@ -60,7 +60,7 @@
   }
 
   .animate-fall {
-    animation: fall 4s linear infinite;
+    animation: fall 4s linear infinite both;
   }
 
   .animate-reveal-left {
