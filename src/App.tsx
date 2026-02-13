@@ -4,7 +4,7 @@ import { Heart } from 'lucide-react';
 function App() {
   const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 });
   const [showYes, setShowYes] = useState(false);
-  const [hearts, setHearts] = useState<Array<{ id: number; x: number; delay: number }>>([]);
+  const [hearts, setHearts] = useState<Array<{ id: number; x: number; delay: number; speed: number }>>([]);
 
   const handleNoHover = () => {
     const maxX = window.innerWidth - 200;
@@ -16,10 +16,11 @@ function App() {
 
   const handleYesClick = () => {
     setShowYes(true);
-    const newHearts = Array.from({ length: 50 }, (_, i) => ({
+    const newHearts = Array.from({ length: 150 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
-      delay: Math.random() * 2,
+      delay: Math.random() * 5,
+      speed: 3 + Math.random() * 3,
     }));
     setHearts(newHearts);
   };
@@ -59,7 +60,7 @@ function App() {
                   left: noButtonPosition.x !== 0 ? `${noButtonPosition.x}px` : 'auto',
                   top: noButtonPosition.y !== 0 ? `${noButtonPosition.y}px` : 'auto',
                 }}
-                className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold text-2xl px-12 py-6 rounded-full shadow-lg transition-all duration-300"
+                className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold text-2xl px-12 py-6 rounded-full shadow-lg transition-all duration-150 ease-out"
               >
                 No
               </button>
@@ -72,7 +73,7 @@ function App() {
         </div>
       ) : (
         <>
-          <div className="fixed inset-0 pointer-events-none z-10">
+          <div className="fixed inset-0 pointer-events-none z-50">
             {hearts.map((heart) => (
               <div
                 key={heart.id}
@@ -80,6 +81,7 @@ function App() {
                 style={{
                   left: `${heart.x}%`,
                   animationDelay: `${heart.delay}s`,
+                  animationDuration: `${heart.speed}s`,
                 }}
               >
                 <Heart className="w-8 h-8 text-red-500 fill-red-500" />
